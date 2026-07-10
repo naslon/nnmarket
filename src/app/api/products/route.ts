@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 import dbConnect from "../../../lib/mongodb";
-import Product from "../../../models/product";
+import Product from "../../../models/Product";
 
 // LISTAR todos os produtos
 export async function GET() {
