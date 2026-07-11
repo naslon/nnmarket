@@ -11,21 +11,36 @@ interface ProductType {
   images: string[];
 }
 
-async function getProducts(): Promise<ProductType[]> {
+async function getProducts(query: string): Promise<ProductType[]> {
   await dbConnect();
-  const products = await Product.find().sort({ createdAt: -1 }).lean();
+
+  const filtro = query
+    ? { title: { $regex: query, $options: "i" } }
+    : {};
+
+  const products = await Product.find(filtro).sort({ createdAt: -1 }).lean();
   return JSON.parse(JSON.stringify(products));
 }
 
-export default async function Home() {
-  const products = await getProducts();
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const { q } = await searchParams;
+  const query = q || "";
+  const products = await getProducts(query);
 
   return (
     <main className="max-w-6xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">Catálogo de Jogos</h1>
 
       {products.length === 0 ? (
-        <p className="text-zinc-500">Nenhum produto cadastrado ainda.</p>
+        <p className="text-zinc-500">
+          {query
+            ? `Nenhum produto encontrado para "${query}".`
+            : "Nenhum produto cadastrado ainda."}
+        </p>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {products.map((product) => (
@@ -43,7 +58,7 @@ export default async function Home() {
               </div>
               <div className="p-3">
                 {product.price !== undefined && (
-                  <p className="font-bold text-lg">
+                  <p className="font-bold text-lg text-zinc-900">
                     R$ {product.price.toFixed(2).replace(".", ",")}
                   </p>
                 )}
