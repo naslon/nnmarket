@@ -73,7 +73,7 @@ export default function LoginPage() {
                 <button
                     type="submit"
                     disabled={enviando}
-                    className="bg-emerald-600 hover:bg-emerald-500 disabled:bg-zinc-400 text-white py-3 rounded-lg font-medium transition"
+                    className="bg-black hover:bg-zinc-800 disabled:bg-zinc-400 text-white py-3 rounded-lg font-medium transition"
                 >
                     {enviando ? "Entrando..." : "Entrar"}
                 </button>

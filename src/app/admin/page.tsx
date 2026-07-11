@@ -144,7 +144,7 @@ export default function AdminPage() {
                 Painel Admin
                 <button
                     onClick={handleLogout}
-                    className="text-sm bg-zinc-200 hover:bg-zinc-300 px-3 py-1.5 rounded-lg font-normal transition"
+                    className="text-sm bg-red-600 hover:bg-red-500 text-white px-3 py-1.5 rounded-lg font-normal transition"
                 >
                     Sair
                 </button>
