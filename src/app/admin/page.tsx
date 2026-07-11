@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { compressImage } from "../../utils/compressImage";
+import { useRouter } from "next/navigation";
 
 interface ProductType {
     _id: string;
@@ -12,6 +13,13 @@ interface ProductType {
 }
 
 export default function AdminPage() {
+    const router = useRouter();
+
+    async function handleLogout() {
+        await fetch("/api/logout", { method: "POST" });
+        router.push("/admin/login");
+        router.refresh();
+    }
     const [products, setProducts] = useState<ProductType[]>([]);
     const [carregando, setCarregando] = useState(true);
     const [enviando, setEnviando] = useState(false);
@@ -132,7 +140,15 @@ export default function AdminPage() {
 
     return (
         <main className="max-w-3xl mx-auto px-4 py-8">
-            <h1 className="text-2xl font-bold mb-6">Painel Admin</h1>
+            <h1 className="text-2xl font-bold mb-6 flex items-center justify-between">
+                Painel Admin
+                <button
+                    onClick={handleLogout}
+                    className="text-sm bg-zinc-200 hover:bg-zinc-300 px-3 py-1.5 rounded-lg font-normal transition"
+                >
+                    Sair
+                </button>
+            </h1>
 
             {/* FORMULÁRIO DE ADICIONAR */}
             <form
