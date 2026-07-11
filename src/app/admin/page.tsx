@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { compressImage } from "../../utils/compressImage";
 
 interface ProductType {
   _id: string;
@@ -66,8 +67,10 @@ export default function AdminPage() {
       formData.append("facebook", facebook);
       formData.append("whatsapp", whatsapp);
 
+      // Comprime cada imagem antes de enviar
       for (let i = 0; i < images.length; i++) {
-        formData.append("images", images[i]);
+        const compressed = await compressImage(images[i]);
+        formData.append("images", compressed);
       }
 
       const res = await fetch("/api/products", {
