@@ -1,6 +1,7 @@
 import dbConnect from "../../../lib/mongodb";
 import Product from "../../../models/Product";
 import { notFound } from "next/navigation";
+import ImageGallery from "../../../components/ImageGallery";
 
 export const dynamic = "force-dynamic";
 
@@ -53,29 +54,12 @@ export default async function ProdutoPage({
   return (
     <main className="max-w-4xl mx-auto px-4 py-8">
       <div className="grid md:grid-cols-2 gap-8">
-        <div>
-          <div className="aspect-square bg-zinc-100 rounded-lg overflow-hidden mb-3">
-            <img
-              src={product.images[0]}
-              alt={product.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          {product.images.length > 1 && (
-            <div className="grid grid-cols-4 gap-2">
-              {product.images.slice(1).map((img, i) => (
-                <div key={i} className="aspect-square bg-zinc-100 rounded overflow-hidden">
-                  <img src={img} alt="" className="w-full h-full object-cover" />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        <ImageGallery images={product.images} alt={product.title} />
 
         <div>
           <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
           {product.price !== undefined && (
-            <p className="text-3xl font-bold text-emerald-600 mb-4">
+            <p className="text-3xl font-bold text-zinc-900 mb-4">
               R$ {product.price.toFixed(2).replace(".", ",")}
             </p>
           )}
@@ -87,9 +71,8 @@ export default async function ProdutoPage({
             {links.map(
               (link) =>
                 product.links?.[link.key] && (
-                  
-                    <a
-key={link.key}
+                  <a
+                    key={link.key}
                     href={product.links[link.key]}
                     target="_blank"
                     rel="noopener noreferrer"
