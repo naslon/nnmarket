@@ -2,6 +2,8 @@ import Link from "next/link";
 import dbConnect from "../lib/mongodb";
 import Product from "../models/Product";
 
+export const dynamic = "force-dynamic";
+
 interface ProductType {
   _id: string;
   title: string;

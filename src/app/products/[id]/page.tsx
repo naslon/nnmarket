@@ -2,6 +2,8 @@ import dbConnect from "../../../lib/mongodb";
 import Product from "../../../models/Product";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 interface ProductType {
   _id: string;
   title: string;
