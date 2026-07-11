@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Header() {
@@ -9,8 +10,15 @@ export default function Header() {
   return (
     <header className="bg-zinc-900 text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
-        <Link href="/" className="text-xl font-bold">
-          🎮 NN Market
+        <Link href="/" className="flex items-center gap-2 text-xl font-bold">
+          <Image
+            src="/naslon.png"
+            alt="NN Market"
+            width={36}
+            height={36}
+            className="rounded"
+          />
+          NasloN Market
         </Link>
 
         {/* Menu desktop */}
