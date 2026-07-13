@@ -13,7 +13,7 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold shrink-0">
           <Image
-            src="/naslon.png"
+            src="/naslon1.png"
             alt="NN Market"
             width={45}
             height={45}
