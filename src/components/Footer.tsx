@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import EmailSubscribe from "./EmailSubscribe";
 
 export default function Footer() {
   function voltarAoTopo() {
@@ -11,7 +12,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#808080] text-white mt-12">
       <div className="max-w-6xl mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Marca-mãe */}
           <div className="flex flex-col items-center sm:items-start gap-3">
             <div className="flex items-center gap-2">
@@ -66,6 +67,9 @@ export default function Footer() {
               📷 Instagram
             </a>
           </div>
+
+          {/* Inscrição por e-mail */}
+          <EmailSubscribe />
         </div>
 
         <div className="border-t border-white/20 mt-8 pt-4 text-center text-xs text-white/60">

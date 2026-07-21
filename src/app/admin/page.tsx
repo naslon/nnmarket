@@ -142,12 +142,20 @@ export default function AdminPage() {
         <main className="max-w-3xl mx-auto px-4 py-8">
             <h1 className="text-2xl font-bold mb-6 flex items-center justify-between">
                 Painel Admin
-                <button
-                    onClick={handleLogout}
-                    className="text-sm bg-red-600 hover:bg-red-500 text-white px-3 py-1.5 rounded-lg font-normal transition"
-                >
-                    Sair
-                </button>
+                <div className="flex items-center gap-2">
+                    <Link
+                        href="/admin/newsletter"
+                        className="text-sm bg-black hover:bg-zinc-800 text-white px-3 py-1.5 rounded-lg font-normal transition"
+                    >
+                        Central de Avisos
+                    </Link>
+                    <button
+                        onClick={handleLogout}
+                        className="text-sm bg-red-600 hover:bg-red-500 text-white px-3 py-1.5 rounded-lg font-normal transition"
+                    >
+                        Sair
+                    </button>
+                </div>
             </h1>
 
             {/* FORMULÁRIO DE ADICIONAR */}
