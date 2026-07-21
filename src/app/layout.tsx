@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
+import { Analytics } from '@vercel/analytics/next';
 
 const sourceSans = Source_Sans_3({
   variable: "--font-sans",
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className={`${sourceSans.variable} antialiased`}>
         <Header />
         {children}
+        <Analytics />
       </body>
     </html>
   );
