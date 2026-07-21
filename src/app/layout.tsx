@@ -12,7 +12,16 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: "NasloN Market",
-  description: "Comercio de jogos e video games",
+  description: "Comercio de Games e Colecionaveis",
+  metadataBase: new URL("https://www.nnmarket.shop"),
+  openGraph: {
+    title: "NasloN Market",
+    description: "Comercio de Games e Colecionaveis",
+    url: "https://www.nnmarket.shop",
+    siteName: "NasloN Market",
+    locale: "pt_BR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
