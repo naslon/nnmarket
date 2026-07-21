@@ -1,15 +1,13 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Libera a própria página de login
   if (pathname === "/admin/login") {
     return NextResponse.next();
   }
 
-  // Protege tudo que começa com /admin
   if (pathname.startsWith("/admin")) {
     const session = request.cookies.get("admin_session");
 
